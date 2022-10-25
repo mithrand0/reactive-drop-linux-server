@@ -12,10 +12,6 @@ COPY settings.cfg /usr/local/
 ENV WINEARCH=win64
 ENV WINEDEBUG=-all
 
-# enable winesync
-ENV WINEESYNC=1
-ENV WINEFSYNC=1
-
 # workdir
 VOLUME /usr/lib/games/reactivedrop
 
