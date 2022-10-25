@@ -1,0 +1,32 @@
+
+name: CI-stable
+
+on:
+  push:
+    branches: [master]
+  repository_dispatch:
+    types: [build]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Login
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+      - name: Build & Push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository }}:latest
+      - name: Deploy
+        uses: indiesdev/curl@v1
+        with:
+          url: ${{ secrets.DEPLOY_HOST }}/ghcr.io/${{ github.repository }}:latest
+          basic-auth: ${{ secrets.DEPLOY_AUTH }}
+          timeout: 20000

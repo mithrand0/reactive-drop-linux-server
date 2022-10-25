@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  swarm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - "port=29001"
+      - "maxplayers=4"
+      - "rd_hostname=Reactive Drop Linux server"
+      - "rd_rcon_password=swarmtest"
+      - "wine_fastsync=1"
+    networks:
+      - network
+    ports:
+      - "29001:29001/tcp"
+      - "29001:29001/udp"
+    volumes:
+      - "/dev/winesync:/dev/winesync"
+      - "reactivedrop:/usr/lib/games/reactivedrop"
+
+volumes:
+  reactivedrop:
+
+networks:
+  network:
