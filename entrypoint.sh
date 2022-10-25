@@ -48,7 +48,7 @@ title "starting game.."
 screen -S game -dm wine srcds_console.exe -console -game reactivedrop \
   -port "${port:-27005}" \
   -maxplayers "${maxplayers}" \
-  +rcon_password swarmtest \
+  -noassert -nomessagebox \
   +map lobby
 
 sleep 5
