@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   swarm:
+    image: mithrand0/reactive-drop-linux-server:latest
     build:
       context: .
       dockerfile: Dockerfile

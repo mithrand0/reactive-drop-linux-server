@@ -1,4 +1,4 @@
-FROM ghcr.io/mithrand0/linux-proton-steam:latest
+FROM mithrand0/linux-proton-steam:latest
 
 # folders
 ENV STEAMFOLDER="/opt/steamcmd"
