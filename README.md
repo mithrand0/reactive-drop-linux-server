@@ -21,7 +21,7 @@ Run: `docker-compose up`
 
 # how to run
 
-Download docker-compose.yml, make your changes, and run `docker-compose up`. 
+Download `docker-compose.yml`, make your changes, and run `docker-compose up`. 
 
 # how to customize
 The game is installed in a volume `/usr/lib/games/reactivedrop/`, you can mount that volume on the host.
