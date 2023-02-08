@@ -28,4 +28,4 @@ The container optionally supports WineSync, if you have a kernel that supports i
 # how to customize
 The game is installed in a volume `/usr/lib/games/reactivedrop/`, you can mount that volume on the host.
 
-Any configuration parameters starting with `rd_` with be written as config, i.e. `rd_rcon_password=test` will be `rcon_password=test` in the server config.
+Any configuration parameters starting with `rd_` with be written as config, i.e. `rd_rcon_password=test` will be `rcon_password test` in the server config.
