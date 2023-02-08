@@ -17,11 +17,13 @@ Get Docker:
 
 Install Docker and Docker-Compose.
 
-Run: `docker-compose up`
-
 # how to run
 
 Download `docker-compose.yml`, make your changes, and run `docker-compose up`. 
+
+# winesync
+
+The container optionally supports WineSync, if you have a kernel that supports it.
 
 # how to customize
 The game is installed in a volume `/usr/lib/games/reactivedrop/`, you can mount that volume on the host.
