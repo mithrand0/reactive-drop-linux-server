@@ -6,7 +6,7 @@ This container does not require a Windows installation to run. It runs on window
 
 # it seems not updated recently
 
-That is because the software auto-updates on start. There where just no bugs reported or found that require an update.
+That is because the software auto-updates on start. There are just no bugs reported or found that require an update.
 
 # requirements
 You need Docker
