@@ -4,6 +4,10 @@ Reactive Drop linux server
 # what does it run on
 This container does not require a Windows installation to run. It runs on windows, linux, macosx, without gui.
 
+# it seems not updated recently
+
+That is because the software auto-updates on start. There where just no bugs reported or found that require an update.
+
 # requirements
 You need Docker
 
