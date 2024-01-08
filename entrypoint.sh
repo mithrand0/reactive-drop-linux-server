@@ -8,10 +8,10 @@ function title() {
   echo $* | boxes -d stone
 }
 
-title "updating steamcmd.."
+title "checking for steamcmd updates.."
 $steamcmd +quit
 
-title "updating game, this might take a while.."
+title "checking for game updates, this might take a while.."
 $steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir reactivedrop +login anonymous +app_update 563560 +app_update 1007 +quit
 mkdir -p /root/.steamcmd
 
@@ -49,16 +49,15 @@ cp /usr/local/settings.cfg "${gamefolder}/reactivedrop/cfg/autoexec.cfg"
 set | grep '^rd_' | cut -d '_' -f 2- | tr '=' ' ' | tr -d "'" >"${gamefolder}/reactivedrop/cfg/user.cfg"
 
 echo "starting game.."
-screen -L -S game -dm wine srcds_console.exe -console -condebug -game reactivedrop \
+truncate -s0 reactivedrop/console.log
+screen -L -S game -dm wine srcds_console.exe -console -condebug -conclearlog -game reactivedrop \
   -port "${port:-27005}" \
   -maxplayers "${maxplayers}" \
   -noassert -nomessagebox \
   +map lobby
 
 title "server started at port ${port:-27005}"
-
-sleep 10
-tail -n 100 -F reactivedrop/console.log
+tail -n 100 -F reactivedrop/console.log &
 
 while true; do
   sleep 5
