@@ -16,8 +16,8 @@ services:
     networks:
       - network
     ports:
-      - "27050:27050 /tcp"
-      - "27050:27050 /udp"
+      - "27050:27050/tcp"
+      - "27050:27050/udp"
     volumes:
       - "/dev/winesync:/dev/winesync"
       - "reactivedrop:/usr/lib/games/reactivedrop"
