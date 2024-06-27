@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   swarm:
     image: mithrand0/reactive-drop-linux-server:latest
@@ -8,22 +6,30 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     environment:
+      # startup variables
       - "port=27050"
       - "maxplayers=4"
+      - "wine_fastsync=1" # enable this if you have a winesync enabled kernel, ie xanmod
+
+      # below variables will be written as server config
+      # in example, rd_rcon_password becomes rcon_password
       - "rd_hostname=Reactive Drop Linux server"
       - "rd_rcon_password=swarmtest"
-      - "wine_fastsync=1"
     networks:
       - network
     ports:
+      # these ports need to be forwarded in your router
+      # use the same port as mentioned further above in this config
       - "27050:27050/tcp"
       - "27050:27050/udp"
     volumes:
+      # enable fast winesync (if available in kernel)
       - "/dev/winesync:/dev/winesync"
-      - "reactivedrop:/usr/lib/games/reactivedrop"
 
-volumes:
-  reactivedrop:
+      # this will download the game into <this folder>/reactivedrop in first use
+      # you can change any config file in the game folder you want after install
+      # please note, if there are game updates, any modified game files will be overwritten
+      - "./reactivedrop:/usr/lib/games/reactivedrop"
 
 networks:
   network:

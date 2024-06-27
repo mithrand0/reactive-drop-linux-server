@@ -1,6 +1,7 @@
+.env*
+.idea/
+data
 docker-compose.override.yml
 export/
-.idea/
-.env*
+reactivedrop/
 shared
-data
