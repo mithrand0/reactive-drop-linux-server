@@ -45,6 +45,9 @@ echo "writing settings.."
 # copy defaults settings to the game folder
 cp /usr/local/settings.cfg "${gamefolder}/reactivedrop/cfg/autoexec.cfg"
 
+# touch an empty workshop.cfg, since some users misinterprete the missing file message
+touch "${gamefolder}/reactivedrop/cfg/workshop.cfg"
+
 # and store user setting too
 set | grep '^rd_' | cut -d '_' -f 2- | tr '=' ' ' | tr -d "'" >"${gamefolder}/reactivedrop/cfg/user.cfg"
 
