@@ -15,6 +15,12 @@ services:
       # in example, rd_rcon_password becomes rcon_password
       - "rd_hostname=Reactive Drop Linux server"
       - "rd_rcon_password=swarmtest"
+
+      # place workshop items here (these are just examples)
+      - "workshop_item_910871185=enable" # better hug
+      - "workshop_item_921573337=enable" # better chat
+
+
     networks:
       - network
     ports:

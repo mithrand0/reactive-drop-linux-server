@@ -12,7 +12,7 @@ title "checking for steamcmd updates.."
 $steamcmd +quit
 
 title "checking for game updates, this might take a while.."
-$steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir reactivedrop +login anonymous +app_update 563560 +app_update 1007 +quit
+$steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir reactivedrop +login anonymous +app_update 563560 validate +app_update 1007 validate +quit
 mkdir -p /root/.steamcmd
 
 # .ain and .bsp files need to be in sync, someone decided to use timestamps for that, instead of hashes..
@@ -46,7 +46,13 @@ echo "writing settings.."
 cp /usr/local/settings.cfg "${gamefolder}/reactivedrop/cfg/autoexec.cfg"
 
 # touch an empty workshop.cfg, since some users misinterprete the missing file message
-touch "${gamefolder}/reactivedrop/cfg/workshop.cfg"
+truncate -s 0 "${gamefolder}/reactivedrop/cfg/workshop.cfg"
+for a in $(set | grep workshop_item | cut -d '_' -f 3 | cut -d '=' -f 1); do
+  echo "rd_enable_workshop_item ${a}" >>"${gamefolder}/reactivedrop/cfg/workshop.cfg"
+done
+
+echo "writing workshop.cfg.."
+cat "${gamefolder}/reactivedrop/cfg/workshop.cfg"
 
 # and store user setting too
 set | grep '^rd_' | cut -d '_' -f 2- | tr '=' ' ' | tr -d "'" >"${gamefolder}/reactivedrop/cfg/user.cfg"
