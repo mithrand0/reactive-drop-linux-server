@@ -2,7 +2,7 @@ FROM debian:bookworm-slim AS proton
 
 # ============================[ SETUP ] =======================
 ENV DEBIAN_FRONTEND="noninteractive"
-ENV PROTON="https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-11/GE-Proton9-11.tar.gz"
+ENV PROTON="https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton9-22/GE-Proton9-22.tar.gz"
 
 # working directory
 WORKDIR /opt
